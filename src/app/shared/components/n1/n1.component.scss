@@ -1,0 +1,48 @@
+.containner-card-n1 {
+  width: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  color: var(--white);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+ .button {
+  margin-top: 1rem;
+  background-color: var(--dark-red);
+ }
+
+ :host ::ng-deep .p-inputtext:enabled:focus {
+  box-shadow: none;
+  border: none;
+}
+
+:host ::ng-deep .p-button {
+  box-shadow: none;
+  border: none;
+  background-color: var(--dark-red);
+}
+
+:host ::ng-deep .p-button:hover {
+  background-color: var(--red);
+}
+
+@media (max-width: 480px) {
+  .containner-card-n1 {
+    scale: 0.4;
+  }
+}

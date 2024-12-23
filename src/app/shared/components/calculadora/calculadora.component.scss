@@ -1,0 +1,46 @@
+:host {
+  width: 60%;
+  height: 100%;
+}
+
+.containner {
+  margin: 1rem;
+}
+
+//estilização do posicionamento das abas
+:host ::ng-deep .p-tabview-nav {
+  justify-content: flex-end;
+}
+
+//estilização da borda inferior da aba selecionada
+:host ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  border-color: var(--dark-red);
+}
+
+//estilização da sombra da aba selecionada
+:host
+  ::ng-deep
+  .p-tabview
+  .p-tabview-nav
+  li
+  .p-tabview-nav-link:not(.p-disabled):focus {
+  box-shadow: none;
+}
+
+//estilização da cor de fundo do elemento
+:host ::ng-deep .p-tabview-nav,
+:host ::ng-deep .p-tabview-panels,
+:host ::ng-deep .p-tabview-nav-link,
+:host ::ng-deep #p-tabpanel-0-label,
+:host ::ng-deep #p-tabpanel-1-label,
+:host ::ng-deep #p-tabpanel-2-label,
+:host ::ng-deep #p-tabpanel-3-label {
+  background-color: var(--onix);
+  color: var(--white);
+}
+
+@media (max-width: 480px) {
+  .containner {
+    margin: 1rem 0;
+  }
+}

@@ -1,0 +1,24 @@
+:host {
+  background-color: var(--black);
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  margin: 0;
+  font-family: var(--hand-font);
+  font-size: 2em;
+  color: var(--white);
+  text-shadow: 0 0 5px var(--dark-red), 0 0 10px var(--dark-red), 0 0 20px var(--dark-red),
+    0 0 40px var(--dark-red), 0 0 80px var(--dark-red);
+}
