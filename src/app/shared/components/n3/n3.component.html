@@ -1,1 +1,20 @@
-<p>n3 works!</p>
+<div class="containner-card-n1">
+  <h2 class="subtítulo-card-n1">Informe suas notas de N3:</h2>
+  <div class="form">
+
+    <p-inputNumber
+      [showButtons]="true"
+      buttonLayout="horizontal"
+      spinnerMode="horizontal"
+      decrementButtonClass="p-button-danger"
+      incrementButtonClass="p-button-success"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus"
+      [(ngModel)]="formalN3"
+      [min]="0"
+      [max]="10"
+      placeholder="FORMAL N3"
+    ></p-inputNumber>
+  </div>
+  <p-button class="button">CALCULAR N3</p-button>
+</div>

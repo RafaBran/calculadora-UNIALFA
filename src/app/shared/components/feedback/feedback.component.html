@@ -1,6 +1,9 @@
 <div class="containner">
   <h2>FEEDBACK</h2>
   <p-scrollPanel [style]="{ width: '100%', height: '200px' }">
-    Content
+    <p *ngIf="resultadoN1 !== null">
+      Sua nota final de N1 é: {{ resultadoN1 }}
+    </p>
+
   </p-scrollPanel>
 </div>

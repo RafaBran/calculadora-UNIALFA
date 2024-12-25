@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class N3Component implements OnInit {
 
+  formalN3: number | any;
+
   constructor() { }
 
   ngOnInit(): void {

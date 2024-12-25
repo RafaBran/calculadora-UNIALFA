@@ -14,6 +14,7 @@
       [max]="10"
       placeholder="PROCESSUAL N1"
       style="margin-bottom: 1rem"
+      type="number"
     ></p-inputNumber>
 
     <p-inputNumber
@@ -28,7 +29,9 @@
       [min]="0"
       [max]="10"
       placeholder="FORMAL N1"
+      type="number"
     ></p-inputNumber>
   </div>
-  <p-button class="button">CALCULAR N1</p-button>
+
+  <p-button (click)="calcularN1()" class="button">CALCULAR N1</p-button>
 </div>

@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class N2Component implements OnInit {
 
+  processualN2: number | any;
+  formalN2: number | any;
+
+
   constructor() { }
 
   ngOnInit(): void {

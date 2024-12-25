@@ -23,11 +23,9 @@ import { N3Component } from './shared/components/n3/n3.component';
 import { N4Component } from './shared/components/n4/n4.component';
 import { CalculadoraComponent } from './shared/components/calculadora/calculadora.component';
 import { FeedbackComponent } from './shared/components/feedback/feedback.component';
-import {DeferModule} from 'primeng/defer';
-import {ScrollTopModule} from 'primeng/scrolltop';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
-
-
+import { DeferModule } from 'primeng/defer';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -54,7 +52,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
     TabViewModule,
     DeferModule,
     ScrollTopModule,
-    ScrollPanelModule
+    ScrollPanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
