@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit {
   resultadoN1: number | null = null;
-  
+  quantoFalta: number | any;
+
+
   constructor(private resultadon1Service: Resultadon1Service) {}
 
   ngOnInit(): void {

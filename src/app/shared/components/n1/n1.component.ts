@@ -10,15 +10,20 @@ export class N1Component implements OnInit {
   processualN1: number | any;
   formalN1: number | any;
   resultadoN1: number | any;
+  quantoFaltaparaN2: number | any;
 
-  constructor(
-    private resultadon1Service: Resultadon1Service
-  ) {}
+  constructor(private resultadon1Service: Resultadon1Service) {}
 
   ngOnInit(): void {}
 
   calcularN1() {
-    this.resultadoN1 = (this.formalN1 * 8 + this.processualN1 * 2) / 10;
-    this.resultadon1Service.setResultadoN1(this.resultadoN1);
+    if (isNaN(this.processualN1) || isNaN(this.formalN1)) {
+      alert('O resultado do cálculo é inválido. Por favor, revise as notas.');
+      return;
+    } else {
+      this.resultadoN1 = (this.formalN1 * 8 + this.processualN1 * 2) / 10;
+      this.resultadon1Service.setResultadoN1(this.resultadoN1);
+      
+    }
   }
 }
