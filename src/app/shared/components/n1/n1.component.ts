@@ -17,13 +17,25 @@ export class N1Component implements OnInit {
   ngOnInit(): void {}
 
   calcularN1() {
+    // if (isNaN(this.processualN1) || isNaN(this.formalN1)) {
+    //   alert('O resultado do cálculo é inválido. Por favor, revise as notas.');
+    //   return;
+    // } else {
+    //   this.resultadoN1 = (this.formalN1 * 8 + this.processualN1 * 2) / 10;
+    //   this.resultadon1Service.setResultadoN1(this.resultadoN1);
+    // }
+
     if (isNaN(this.processualN1) || isNaN(this.formalN1)) {
       alert('O resultado do cálculo é inválido. Por favor, revise as notas.');
       return;
-    } else {
-      this.resultadoN1 = (this.formalN1 * 8 + this.processualN1 * 2) / 10;
-      this.resultadon1Service.setResultadoN1(this.resultadoN1);
-      
     }
+    this.resultadoN1 = (this.formalN1 * 8 + this.processualN1 * 2) / 10;
+    this.resultadon1Service.setResultadoN1(this.resultadoN1);
+    this.calculoQuantoFalta();
+  }
+
+  calculoQuantoFalta() {
+    this.quantoFaltaparaN2 = 8 - this.resultadoN1;
+    this.resultadon1Service.setQuantoFaltaN2(this.quantoFaltaparaN2);
   }
 }

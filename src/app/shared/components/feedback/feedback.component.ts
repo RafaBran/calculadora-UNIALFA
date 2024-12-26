@@ -1,5 +1,5 @@
-import { Resultadon1Service } from './../../../core/services/resultadon1.service';
 import { Component, OnInit } from '@angular/core';
+import { Resultadon1Service } from './../../../core/services/resultadon1.service';
 
 @Component({
   selector: 'app-feedback',
@@ -8,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit {
   resultadoN1: number | null = null;
-  quantoFalta: number | any;
-
+  quantoFaltaparaN2: number | null = null;
 
   constructor(private resultadon1Service: Resultadon1Service) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.resultadon1Service.resultadoN1$.subscribe((resultado) => {
       this.resultadoN1 = resultado;
+    });
+    this.resultadon1Service.quantoFaltaN2$.subscribe((quantoFalta) => {
+      this.quantoFaltaparaN2 = quantoFalta;
     });
   }
 }
