@@ -15,6 +15,7 @@ export class Resultadon1Service {
   setResultadoN1(resultado: number) {
     this.resultadoN1Source.next(resultado);
   }
+  
   setQuantoFaltaN2(quantoFalta: number) {
     this.quantoFaltaN2Source.next(quantoFalta);
   }
