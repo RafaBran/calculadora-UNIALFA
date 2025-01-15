@@ -19,6 +19,12 @@ p {
   font-family: var(--hand-font);
   font-size: 2em;
   color: var(--white);
+  transition: 1s ease;
+}
+
+p:hover {
   text-shadow: 0 0 5px var(--dark-red), 0 0 10px var(--dark-red), 0 0 20px var(--dark-red),
     0 0 40px var(--dark-red), 0 0 80px var(--dark-red);
 }
+
+
