@@ -27,6 +27,9 @@ import { DeferModule } from 'primeng/defer';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 
+import { AvaliacaoserviceService } from '../app/services/avaliacaoservice.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +57,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     ScrollTopModule,
     ScrollPanelModule,
   ],
-  providers: [],
+  providers: [AvaliacaoserviceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

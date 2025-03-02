@@ -21,12 +21,12 @@ h2 {
   flex-direction: column;
 }
 
- .button {
+.button {
   margin-top: 1rem;
   background-color: var(--dark-red);
- }
+}
 
- :host ::ng-deep .p-inputtext:enabled:focus {
+:host ::ng-deep .p-inputtext:enabled:focus {
   box-shadow: none;
   border: none;
 }

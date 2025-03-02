@@ -1,7 +1,6 @@
 <div class="containner-card-n1">
-  <h2 class="subtítulo-card-n1">Informe suas notas de N4:</h2>
+  <h2 class="subtítulo-card-n1">Informe sua nota de N4:</h2>
   <div class="form">
-
     <p-inputNumber
       [showButtons]="true"
       buttonLayout="horizontal"
@@ -16,5 +15,6 @@
       placeholder="FORMAL N4"
     ></p-inputNumber>
   </div>
-  <p-button class="button">CALCULAR N4</p-button>
+
+  <p-button class="button" (click)="calcularN4()">CALCULAR N4</p-button>
 </div>
