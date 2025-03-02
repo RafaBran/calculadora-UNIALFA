@@ -15,21 +15,19 @@ export class AvaliacaoserviceService {
   private feedbackSubject = new BehaviorSubject<string>('');
   feedback$ = this.feedbackSubject.asObservable();
 
-  // 🔹 Método para definir as notas com verificações de bloqueio e impedindo reatribuição
   setNota(tipo: 'N1' | 'N2' | 'N3' | 'N4', valor: number) {
     if (!this.podePreencherNota(tipo)) {
-      return; // 🔹 Bloqueia se a nota anterior não foi preenchida
+      return;
     }
 
     if (this.notas[tipo] !== null) {
-      return; // 🔹 Impede que a nota seja alterada após ser preenchida
+      return;
     }
 
     this.notas[tipo] = valor;
     this.atualizarFeedback(tipo);
   }
 
-  // 🔹 Método para verificar se a próxima nota pode ser preenchida
   podePreencherNota(tipo: 'N1' | 'N2' | 'N3' | 'N4'): boolean {
     if (tipo === 'N1') return this.notas.N1 === null;
     if (tipo === 'N2') return this.notas.N1 !== null && this.notas.N2 === null;
