@@ -12,4 +12,8 @@ export class CalculadoraComponent implements OnInit {
   ngOnInit() {
   }
 
+  resetar() {
+    window.location.reload();
+  }
+
 }

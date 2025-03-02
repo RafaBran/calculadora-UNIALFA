@@ -27,6 +27,16 @@
   box-shadow: none;
 }
 
+:host ::ng-deep .p-button {
+  box-shadow: none;
+  border: none;
+  background-color: var(--gray);
+}
+
+:host ::ng-deep .p-button:hover {
+  background-color: var(--black);
+}
+
 //estilização da cor de fundo do elemento
 :host ::ng-deep .p-tabview-nav,
 :host ::ng-deep .p-tabview-panels,
