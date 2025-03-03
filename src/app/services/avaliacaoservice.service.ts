@@ -46,6 +46,7 @@ export class AvaliacaoserviceService {
 
     if (tipo === 'N1' && N1 !== null) {
       const mediaParaPassar = 8 * 2 - N1;
+      mensagem = `Feedback N1\n`;
       mensagem = `Sua nota em N1 foi ${N1.toFixed(1)}.\n`;
       mensagem += mediaParaPassar <= 10
         ? `Para passar direto, você precisa tirar ${mediaParaPassar.toFixed(1)} na N2.`
@@ -53,6 +54,7 @@ export class AvaliacaoserviceService {
     }
     else if (tipo === 'N2' && N2 !== null) {
       const mediaN2 = (N1! + N2) / 2;
+      mensagem = `Feedback N2\n`;
       mensagem = `Sua média até N2 é ${mediaN2.toFixed(1)}.\n`;
 
       if (mediaN2 >= 8) {
@@ -68,6 +70,7 @@ export class AvaliacaoserviceService {
     }
     else if (tipo === 'N3' && N3 !== null) {
       const mediaAteN3 = (N1! + N2! + N3) / 3;
+      mensagem = `Feedback N3\n`;
       mensagem = `Sua nota em N3 foi ${N3.toFixed(1)}.\n`;
 
       if (mediaAteN3 >= 5) {
@@ -82,6 +85,7 @@ export class AvaliacaoserviceService {
     else if (tipo === 'N4' && N4 !== null) {
       const mediaAteN3 = (N1! + N2! + N3!) / 3;
       const mediaFinal = (mediaAteN3 + N4) / 2;
+      mensagem = `Feedback N4\n`;
       mensagem = `Sua nota em N4 foi ${N4.toFixed(1)}.\n`;
       mensagem += mediaFinal >= 5
         ? 'Parabéns, você foi aprovado na disciplina!'
