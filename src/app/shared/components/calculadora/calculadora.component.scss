@@ -30,12 +30,14 @@
 :host ::ng-deep .p-button {
   box-shadow: none;
   border: none;
-  background-color: var(--gray);
+  background-color: var(--black);
   transition: 1s;
 }
 
 :host ::ng-deep .p-button:hover {
+  transform: scale(1.1);
   background-color: var(--black);
+
 }
 
 //estilização da cor de fundo do elemento
