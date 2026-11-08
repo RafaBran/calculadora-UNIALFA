@@ -1,30 +1,51 @@
 :host {
-  background-color: var(--black);
-  height: 10vh;
+  display: block;
+  border-top: 1px solid var(--borda);
+  background: var(--superficie);
+}
+
+.rodape {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    text-align: left;
+  }
 }
 
-a {
+.aviso {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--texto-suave);
+
+  a {
+    color: var(--marca);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+}
+
+.assinatura {
+  font-family: var(--fonte-assinatura);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--texto);
   text-decoration: none;
-  margin: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  transition: color 0.3s, text-shadow 0.3s;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--marca);
+    text-shadow: 0 0 12px var(--marca-halo);
+    outline: none;
+  }
 }
-
-p {
-  margin: 0;
-  font-family: var(--hand-font);
-  font-size: 2em;
-  color: var(--white);
-  transition: 1s ease;
-}
-
-p:hover {
-  text-shadow: 0 0 5px var(--dark-red), 0 0 10px var(--dark-red), 0 0 20px var(--dark-red),
-    0 0 40px var(--dark-red), 0 0 80px var(--dark-red);
-}
-
-

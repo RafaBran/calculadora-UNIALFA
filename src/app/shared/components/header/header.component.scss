@@ -1,23 +1,58 @@
 :host {
-  background-color: var(--dark-red);
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  background: linear-gradient(135deg, var(--marca-escura) 0%, #c4191b 60%, #e03126 100%);
+  color: #fff;
 }
 
-a {
+.cabecalho {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 1.5rem;
+
+  @media (min-width: 600px) {
+    padding: 1.75rem 1.5rem 2.25rem;
+  }
+}
+
+.marca {
+  display: inline-block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
   text-decoration: none;
-  text-transform: none;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  opacity: 0.9;
+  transition: opacity 0.15s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
-p {
-  font-size: 2.5em;
-  margin: 0;
-  color: var(--white);
+.titulo {
+  margin-top: 1rem;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.625rem, 4vw + 0.5rem, 2.375rem);
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    margin: 0.375rem 0 0;
+    max-width: 38rem;
+    font-size: 0.9375rem;
+    opacity: 0.88;
+
+    @media (min-width: 600px) {
+      font-size: 1rem;
+    }
+  }
 }
-
-

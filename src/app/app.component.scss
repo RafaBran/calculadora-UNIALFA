@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.conteudo {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 6rem; /* espaço para a barra de resumo no celular */
+
+  @media (min-width: 600px) {
+    padding: 2rem 1.5rem 6rem;
+  }
+
+  @media (min-width: 960px) {
+    padding-bottom: 3rem;
+  }
+}

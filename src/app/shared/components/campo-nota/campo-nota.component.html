@@ -1,0 +1,23 @@
+<label class="campo" [class.campo--erro]="erro" [class.campo--desabilitado]="desabilitado" [for]="id">
+  <span class="campo__rotulo">{{ rotulo }}</span>
+  <span class="campo__caixa">
+    <input
+      [id]="id"
+      type="text"
+      inputmode="decimal"
+      autocomplete="off"
+      placeholder="0 a 10"
+      maxlength="5"
+      [value]="texto"
+      [disabled]="desabilitado"
+      [attr.aria-invalid]="erro ? true : null"
+      [attr.aria-describedby]="id + '-ajuda'"
+      (input)="aoDigitar($any($event.target).value)"
+      (blur)="aoSair()"
+    />
+    <span class="campo__sufixo" aria-hidden="true">/ 10</span>
+  </span>
+  <span class="campo__ajuda" [id]="id + '-ajuda'" [attr.role]="erro ? 'alert' : null">
+    {{ erro || dica }}
+  </span>
+</label>

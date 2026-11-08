@@ -1,10 +1,154 @@
-<div pDefer class="containner">
-  <p-button (click)="resetar()" class="button">RESETAR</p-button>
+<section class="painel" aria-labelledby="titulo-notas">
+  <header class="painel__cabecalho">
+    <div>
+      <h2 id="titulo-notas" class="painel__titulo">Suas notas</h2>
+      <p class="painel__descricao">
+        Preencha conforme as notas forem saindo — o resultado é atualizado na hora.
+      </p>
+    </div>
+    <button type="button" class="botao-limpar" (click)="limpar()">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path d="M3 12a9 9 0 1 0 3-6.7L3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M3 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Limpar
+    </button>
+  </header>
 
-  <p-tabView>
-    <p-tabPanel header="N1"><app-n1></app-n1></p-tabPanel>
-    <p-tabPanel header="N2"><app-n2></app-n2> </p-tabPanel>
-    <p-tabPanel header="N3"><app-n3></app-n3></p-tabPanel>
-    <p-tabPanel header="N4"><app-n4></app-n4></p-tabPanel>
-  </p-tabView>
-</div>
+  <label class="frequencia" [class.frequencia--alerta]="!entrada.frequenciaMinima">
+    <input
+      type="checkbox"
+      role="switch"
+      [checked]="entrada.frequenciaMinima"
+      (change)="atualizar('frequenciaMinima', $any($event.target).checked)"
+    />
+    <span class="frequencia__chave" aria-hidden="true"></span>
+    <span class="frequencia__texto">
+      <strong>Tenho frequência mínima de 75%</strong>
+      <small>Abaixo disso, a reprovação é automática (Art. 20).</small>
+    </span>
+  </label>
+
+  <ol class="etapas">
+    <!-- N1 -->
+    <li class="etapa" [attr.data-estado]="estado('N1')">
+      <div class="etapa__cabecalho">
+        <span class="etapa__marcador" aria-hidden="true">1</span>
+        <div class="etapa__titulos">
+          <h3>N1</h3>
+          <p>Formal × 0,8 + Processual × 0,2</p>
+        </div>
+        <span class="etapa__nota" *ngIf="resultado.n1 !== null">{{ formatar(resultado.n1) }}</span>
+      </div>
+      <div class="etapa__campos etapa__campos--duplo">
+        <app-campo-nota
+          rotulo="Formal (NF)"
+          dica="Peso 80%"
+          [versao]="versao"
+          [valor]="entrada.n1Formal"
+          (valorChange)="atualizar('n1Formal', $event)"
+        ></app-campo-nota>
+        <app-campo-nota
+          rotulo="Processual (NPRO)"
+          dica="Peso 20%"
+          [versao]="versao"
+          [valor]="entrada.n1Processual"
+          (valorChange)="atualizar('n1Processual', $event)"
+        ></app-campo-nota>
+      </div>
+    </li>
+
+    <!-- N2 -->
+    <li class="etapa" [attr.data-estado]="estado('N2')">
+      <div class="etapa__cabecalho">
+        <span class="etapa__marcador" aria-hidden="true">2</span>
+        <div class="etapa__titulos">
+          <h3>N2</h3>
+          <p>Formal × 0,8 + Processual × 0,2</p>
+        </div>
+        <span class="etapa__nota" *ngIf="resultado.n2 !== null">{{ formatar(resultado.n2) }}</span>
+      </div>
+      <div class="etapa__campos etapa__campos--duplo">
+        <app-campo-nota
+          rotulo="Formal (NF)"
+          dica="Peso 80%"
+          [versao]="versao"
+          [valor]="entrada.n2Formal"
+          (valorChange)="atualizar('n2Formal', $event)"
+        ></app-campo-nota>
+        <app-campo-nota
+          rotulo="Processual (NPRO)"
+          dica="Peso 20%"
+          [versao]="versao"
+          [valor]="entrada.n2Processual"
+          (valorChange)="atualizar('n2Processual', $event)"
+        ></app-campo-nota>
+      </div>
+    </li>
+
+    <!-- N3 -->
+    <li class="etapa" [attr.data-estado]="estado('N3')">
+      <div class="etapa__cabecalho">
+        <span class="etapa__marcador" aria-hidden="true">3</span>
+        <div class="etapa__titulos">
+          <h3>N3</h3>
+          <p>
+            {{ resultado.etapasHabilitadas.N3 ? 'Prova formal, obrigatória com média N1/N2 abaixo de 8' : motivoBloqueio('N3') }}
+          </p>
+        </div>
+      </div>
+      <div class="etapa__campos" *ngIf="resultado.etapasHabilitadas.N3">
+        <app-campo-nota
+          rotulo="Nota da N3"
+          [versao]="versao"
+          [valor]="entrada.n3"
+          (valorChange)="atualizar('n3', $event)"
+        ></app-campo-nota>
+      </div>
+    </li>
+
+    <!-- N4 -->
+    <li class="etapa" [attr.data-estado]="estado('N4')">
+      <div class="etapa__cabecalho">
+        <span class="etapa__marcador" aria-hidden="true">4</span>
+        <div class="etapa__titulos">
+          <h3>N4 <span class="etapa__rotulo">Recuperação</span></h3>
+          <p>
+            {{ resultado.etapasHabilitadas.N4 ? 'Média final = (média N1/N2/N3 + N4) ÷ 2' : motivoBloqueio('N4') }}
+          </p>
+        </div>
+      </div>
+      <div class="etapa__campos" *ngIf="resultado.etapasHabilitadas.N4">
+        <app-campo-nota
+          rotulo="Nota da N4"
+          [versao]="versao"
+          [valor]="entrada.n4"
+          (valorChange)="atualizar('n4', $event)"
+        ></app-campo-nota>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<app-resultado #painelResultado [resultado]="resultado"></app-resultado>
+
+<button
+  type="button"
+  class="resumo-movel"
+  [class.resumo-movel--oculto]="resultadoVisivel"
+  [attr.data-situacao]="resultado.situacao"
+  [attr.aria-hidden]="resultadoVisivel"
+  [tabIndex]="resultadoVisivel ? -1 : 0"
+  (click)="irParaResultado()"
+>
+  <span class="resumo-movel__texto">
+    <strong>{{ resumoSituacao }}</strong>
+    <small>{{ resumoMeta }}</small>
+  </span>
+  <span class="resumo-movel__acao">
+    Ver resultado
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </span>
+</button>

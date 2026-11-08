@@ -1,0 +1,82 @@
+<section class="resultado" aria-labelledby="titulo-resultado" aria-live="polite">
+  <header class="status" [attr.data-situacao]="resultado.situacao">
+    <span class="status__icone" aria-hidden="true" [ngSwitch]="resultado.situacao">
+      <svg *ngSwitchCase="'aprovado'" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+      <svg *ngSwitchCase="'reprovado'" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" /></svg>
+      <svg *ngSwitchDefault viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M12 8v4.5l3 2" /></svg>
+    </span>
+    <div>
+      <p class="status__sobretitulo">Situação</p>
+      <h2 id="titulo-resultado" class="status__titulo">{{ titulo }}</h2>
+    </div>
+  </header>
+
+  <dl class="indicadores">
+    <div
+      *ngFor="let i of indicadores"
+      class="indicador"
+      [class.indicador--destaque]="i.destaque"
+      [class.indicador--vazio]="i.valor === null"
+    >
+      <dt>{{ i.rotulo }}</dt>
+      <dd>{{ formatar(i.valor) }}</dd>
+    </div>
+  </dl>
+
+  <div class="bloco" *ngIf="resultado.metas.length">
+    <h3 class="bloco__titulo">O que você precisa</h3>
+    <ul class="metas">
+      <li *ngFor="let m of resultado.metas" class="meta" [class.meta--impossivel]="m.nota === null">
+        <span class="meta__nota">
+          <ng-container *ngIf="m.nota !== null; else impossivel">
+            {{ m.nota === 0 ? 'Qualquer' : formatarExigida(m.nota) }}
+          </ng-container>
+          <ng-template #impossivel>&gt; 10</ng-template>
+        </span>
+        <span class="meta__texto">
+          <ng-container *ngIf="m.nota !== null && m.nota > 0">na {{ m.etapa }} </ng-container>{{ m.descricao }}
+          <small *ngIf="m.notaFormal !== undefined && m.nota !== null && m.nota > 0">
+            Com a processual informada, a formal precisa ser
+            {{ m.notaFormal === null ? 'maior que 10' : 'pelo menos ' + formatarExigida(m.notaFormal) }}.
+          </small>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="mensagens">
+    <li *ngFor="let m of resultado.mensagens" class="mensagem" [attr.data-tipo]="m.tipo">
+      <span>{{ m.texto }}</span>
+      <span class="mensagem__artigo" *ngIf="m.artigo">{{ m.artigo }}</span>
+    </li>
+  </ul>
+
+  <details class="regras">
+    <summary>Como funciona a avaliação</summary>
+    <ol>
+      <li><strong>N1 e N2</strong> = Formal × 0,8 + Processual × 0,2.</li>
+      <li>Média N1/N2 <strong>≥ 8</strong>: aprovado direto. <strong>&lt; 3</strong>: reprovado. Entre 3 e 8: faz a N3.</li>
+      <li>Média N1/N2/N3 <strong>≥ 5</strong>: aprovado. <strong>&lt; 3</strong>: reprovado. Entre 3 e 5: faz a N4.</li>
+      <li>Média final = (média N1/N2/N3 + N4) ÷ 2, precisa ser <strong>≥ 5</strong>.</li>
+      <li>Frequência abaixo de <strong>75%</strong> reprova independentemente das notas.</li>
+    </ol>
+    <div class="fonte">
+      <p>Fonte: Resolução UNIALFA nº 063/2023 (cursos presenciais).</p>
+      <div class="fonte__acoes">
+        <a class="botao-pdf" [href]="urlResolucao" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          Ver resolução
+        </a>
+        <a class="botao-pdf" [href]="urlResolucao" [attr.download]="arquivoResolucao">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
+          </svg>
+          Baixar PDF
+        </a>
+      </div>
+    </div>
+  </details>
+</section>

@@ -1,17 +1,114 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Ms+Madi&display=swap');
 
 :root {
-  --black: #191919;
-  --gray: #323232;
-  --white: #fff;
-  --off-white: #f6f6cd;
-  --red: #e0311b;
-  --dark-red: #9e200f;
+  color-scheme: light;
 
-  --primary-font: "Roboto", sans-serif;
-  --secondary-font: "Open Sans", sans-serif;
-  --hand-font: "Ms Madi", cursive;
+  /* Marca UNIALFA */
+  --marca: #c4191b;
+  --marca-escura: #9c1717;
+  --marca-halo: rgb(196 25 27 / 0.15);
+  --marca-fundo: #fdecec;
+
+  /* Superfícies e texto */
+  --fundo: #f4f4f6;
+  --superficie: #ffffff;
+  --superficie-2: #f7f7f9;
+  --borda: #e4e4e9;
+  --borda-forte: #c9c9d1;
+  --texto: #1d1b20;
+  --texto-suave: #5d5a63;
+  --texto-fraco: #8f8c96;
+
+  /* Estados */
+  --sucesso: #13804b;
+  --sucesso-fundo: #e5f5ec;
+  --erro: #c4191b;
+  --erro-fundo: #fdecec;
+  --erro-halo: rgb(196 25 27 / 0.15);
+  --alerta: #b86e00;
+  --info: #3b5bdb;
+
+  --raio-sm: 0.5rem;
+  --raio-md: 0.75rem;
+  --raio-lg: 1.125rem;
+  --sombra: 0 1px 2px rgb(16 16 24 / 0.04), 0 4px 16px rgb(16 16 24 / 0.06);
+
+  --fonte: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fonte-assinatura: 'Ms Madi', cursive;
 }
 
+@mixin tema-escuro {
+  color-scheme: dark;
+
+  --marca: #f0484a;
+  --marca-escura: #9c1717;
+  --marca-halo: rgb(240 72 74 / 0.25);
+  --marca-fundo: rgb(240 72 74 / 0.14);
+
+  --fundo: #121115;
+  --superficie: #1b1a1f;
+  --superficie-2: #232229;
+  --borda: #2f2e36;
+  --borda-forte: #45434d;
+  --texto: #f1f0f4;
+  --texto-suave: #b2afb9;
+  --texto-fraco: #7d7a85;
+
+  --sucesso: #3ccf86;
+  --sucesso-fundo: rgb(60 207 134 / 0.12);
+  --erro: #f0484a;
+  --erro-fundo: rgb(240 72 74 / 0.12);
+  --erro-halo: rgb(240 72 74 / 0.25);
+  --alerta: #f0a83c;
+  --info: #7b93ff;
+
+  --sombra: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include tema-escuro;
+  }
+}
+
+:root[data-theme='dark'] {
+  @include tema-escuro;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
